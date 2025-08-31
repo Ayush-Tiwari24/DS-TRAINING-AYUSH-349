@@ -3,7 +3,9 @@ using namespace std;
 
 int main(){
     int n, arr[100],count=0;
+    cout<<"Enter the value of n";
     cin>>n;
+    cout<<"Enter the elements of an array";
     for(int i=0;i<n;i++){
         cin>>arr[i]; 
     }
@@ -12,14 +14,12 @@ int main(){
          if(arr[j]==i){     
               count++;
               break;
-            }
-            
+            }    
         }
         if(count==0){
             cout<<i ;
         }
         count=0;   
     }
-    
     return 0;
 }
