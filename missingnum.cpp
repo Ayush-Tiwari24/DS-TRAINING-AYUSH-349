@@ -14,7 +14,7 @@ int main(){
          if(arr[j]==i){     
               count++;
               break;
-            }    
+            }   
         }
         if(count==0){
             cout<<i ;
