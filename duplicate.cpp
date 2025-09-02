@@ -1,29 +1,44 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-    int arr[100];
+int main() {
     int n;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    int arr[100], buffer[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        buffer[i] = -1;
     }
-    int max=0;
-    for(int i=0;i<n;i++){
-        if(arr[i]>max){
-            max=arr[i];
+
+    for (int i = 0; i < n; i++) {
+        if (buffer[i] != 0) {
+            int count = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                    buffer[j] = 0;
+                }
+            }
+            buffer[i] = count;
         }
     }
-  int buffer[max];
-    for(int i=0;i<=max;i++){
-        buffer[i]=0;
+
+    cout << "\nRepeated elements:\n";
+    for (int i = 0; i < n; i++) {
+        if (buffer[i] > 1) {
+            cout << arr[i] << " count: " << buffer[i] <<endl;
+        }
     }
 
-    for(int i=0;i<=max;i++){
-        buffer[arr[i]]++;
+    cout << "\nNon repeated elements:\n";
+    for (int i = 0; i < n; i++) {
+        if (buffer[i] == 1) {
+            cout << arr[i] << "\n";
+        }
     }
 
-    for(int i=0;i<=max;i++){
-            cout << "the count of " << i << " is " << buffer[i] << endl;
-    }
+    return 0;
 }
